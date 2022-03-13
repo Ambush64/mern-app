@@ -29,6 +29,10 @@ app.use(
   })
 );
 
+router.get("/", (req, res) => {
+  res.send("hello from server");
+});
+
 // storing data in db
 // using async
 router.post("/register", async (req, res) => {
