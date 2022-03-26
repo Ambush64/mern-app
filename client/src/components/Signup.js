@@ -30,6 +30,7 @@ const Signup = () => {
       const { name, email, phone, work, password, cpassword } = user;
 
       // initially it wint work cuz it sends on port 3000 but our server is on port 8000
+      // if your cors is not working just restart the react app
       const res = await fetch("/register", {
         method: "POST",
         headers: {
