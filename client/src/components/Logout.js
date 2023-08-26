@@ -9,7 +9,7 @@ const Logout = () => {
   // using promises
 
   useEffect(() => {
-    fetch("/logout", {
+    fetch("https://mern-app-rho.vercel.app/logout", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
