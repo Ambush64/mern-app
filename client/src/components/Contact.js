@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { getCookie } from "./Cookie";
 
 const Contact = () => {
   const [userData, setUserData] = useState({
@@ -15,13 +16,13 @@ const Contact = () => {
     // the user is valid or not
 
     try {
-      const res = await fetch("https://mern-app-rho.vercel.app/getdata", {
-        method: "GET",
+      const res = await fetch("https://colorful-hen-earrings.cyclic.cloud/getdata", {
+        method: "POST",
         headers: {
           "Content-Type": "application/json",
+          Authorization: `Bearer ${getCookie()}`,
         },
-                credentials: "include"
-
+        credentials: 'include'
       });
       console.log("object");
       const data = await res.json();
