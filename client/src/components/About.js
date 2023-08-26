@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import aboutpic from "../images/aboutpic.jpg";
 import logo from "../images/logo.png";
 import { useNavigate } from "react-router-dom";
+import { getCookie } from "./Cookie";
 
 const About = () => {
   const [userData, setUserData] = useState({});
@@ -12,17 +13,19 @@ const About = () => {
     // the user is valid or not
 
     try {
-      const res = await fetch("https://mern-app-rho.vercel.app/about", {
-        method: "GET",
+      const res = await fetch("https://colorful-hen-earrings.cyclic.cloud/about", {
+        method: "POST",
         headers: {
           "Content-Type": "application/json",
           // accept is for property to accept application/json
           Accept: "application/json",
+          Authorization: `Bearer ${getCookie()}`,
         },
         // credentials is for cookies to be sent properly
         // credentials is must for sending cookies/tokens etc
         credentials: "include"
       });
+
       console.log("object");
       const data = await res.json();
       console.log(data);
