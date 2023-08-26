@@ -8,6 +8,10 @@ const User = require("../model/userSchema");
 const authenticate = async (req, res, next) => {
   try {
     // console.log(req);
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept"); 
+    res.set('Access-Control-Allow-Origin', '*');
+
     const token = req.cookies.jwtoken;
 
     // compare the token (ie token ) with the secret key
