@@ -110,7 +110,7 @@ router.post("/signin", async (req, res) => {
         });
 
         // res.setHeader("Set-Cookie", [`jwtoken=${token}; Expires=${new Date(Date.now() + 25892000000)};Secure; SameSite=None; Path=/`]);
-        res.setHeader('Set-Cookie',['type=ninja']).status(200).json({
+        res.status(200).json({
               message: "login successful",
               cookie : token
         });
