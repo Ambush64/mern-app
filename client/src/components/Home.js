@@ -9,7 +9,7 @@ const Home = () => {
     // the user is valid or not
 
     try {
-      const res = await fetch("/getdata", {
+      const res = await fetch("mern-app-rho.vercel.app/getdata", {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
