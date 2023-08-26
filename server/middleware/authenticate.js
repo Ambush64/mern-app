@@ -16,7 +16,7 @@ const authenticate = async (req, res, next) => {
 
     // compare the token (ie token ) with the secret key
 
-    const verifyToken = jwt.verify(token, process.env.SECRET_KEY);
+    const verifyToken = jwt.verify(token, "SAMPLEDATAOOWSAMPLEDATAOOWSAMPLEDATAOOWSAMPLEDATAOOWSAMPLEDATAOOW");
 
     // using the verify token we get all the details of the user
 
