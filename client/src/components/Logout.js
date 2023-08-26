@@ -9,7 +9,7 @@ const Logout = () => {
   // using promises
 
   useEffect(() => {
-    fetch("https://mern-app-rho.vercel.app/logout", {
+    fetch("https://colorful-hen-earrings.cyclic.cloud/logout", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -18,7 +18,7 @@ const Logout = () => {
       },
       // credentials is for cookies to be sent properly
       // credentials is must for sending cookies/tokens etc
-      credentials: "include",
+      credentials: "include"
     })
       .then((res) => {
         dispatch({ type: "USER", payload: false });
