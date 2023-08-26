@@ -22,6 +22,8 @@ const Login = () => {
           email,
           password,
         }),
+                credentials: "include"
+
       });
 
       const data = res.json();
