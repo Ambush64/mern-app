@@ -20,6 +20,8 @@ const Contact = () => {
         headers: {
           "Content-Type": "application/json",
         },
+                credentials: "include"
+
       });
       console.log("object");
       const data = await res.json();
