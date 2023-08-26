@@ -15,7 +15,7 @@ const Contact = () => {
     // the user is valid or not
 
     try {
-      const res = await fetch("mern-app-rho.vercel.app/getdata", {
+      const res = await fetch("https://mern-app-rho.vercel.app/getdata", {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
