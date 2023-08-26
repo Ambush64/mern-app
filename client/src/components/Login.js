@@ -28,7 +28,7 @@ const Login = () => {
 
       const data = res.json();
 
-      if (res.status === 400 || !data) {
+      if (res.status === 400 || res.status === 401 || !data) {
         window.alert("Invalid Credentials");
       } else {
         // no need to seperately define action
