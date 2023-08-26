@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { getCookie } from "./Cookie";
 
 const Home = () => {
   const [userName, setUserName] = useState("");
@@ -9,16 +10,16 @@ const Home = () => {
     // the user is valid or not
 
     try {
-      const res = await fetch("https://mern-app-rho.vercel.app/getdata", {
-        method: "GET",
+      const res = await fetch("https://colorful-hen-earrings.cyclic.cloud/getdata", {
+        method: "POST",
         headers: {
           "Content-Type": "application/json",
+          Authorization: `Bearer ${getCookie()}`,
         },
-                credentials: "include"
-
+        credentials: 'include'
       });
-      console.log(res.body);
-      const data = await res.json();
+
+      const data = await res.json()
       setUserName(data.name);
       setShow(true);
 
