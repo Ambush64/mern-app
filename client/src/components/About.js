@@ -12,7 +12,7 @@ const About = () => {
     // the user is valid or not
 
     try {
-      const res = await fetch("mern-app-rho.vercel.app/about", {
+      const res = await fetch("http://localhost:8000/about", {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
@@ -21,7 +21,7 @@ const About = () => {
         },
         // credentials is for cookies to be sent properly
         // credentials is must for sending cookies/tokens etc
-        credentials: "include",
+        credentials: "include"
       });
       console.log("object");
       const data = await res.json();
@@ -63,9 +63,9 @@ const About = () => {
                   RANKING: <span> 1/10</span>
                 </p>
                 <nav>
-                  <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                  <div className="nav nav-tabs" id="nav-tab" role="tablist">
                     <button
-                      class="nav-link active"
+                      className="nav-link active"
                       id="nav-home-tab"
                       data-bs-toggle="tab"
                       data-bs-target="#home"
@@ -77,7 +77,7 @@ const About = () => {
                       Home
                     </button>
                     <button
-                      class="nav-link"
+                      className="nav-link"
                       id="nav-profile-tab"
                       data-bs-toggle="tab"
                       data-bs-target="#profile"
@@ -130,7 +130,7 @@ const About = () => {
                   className="tab-pane fade active show"
                   id="home"
                   role="tabpanel"
-                  aria-pledby="home-tab"
+                  aria-labelledby="home-tab"
                 >
                   <div className="row">
                     <div className="col-md-6">
@@ -178,7 +178,7 @@ const About = () => {
                   className="tab-pane fade"
                   id="profile"
                   role="tabpanel"
-                  aria-pledby="profile-tab"
+                  aria-labelledby="profile-tab"
                 >
                   <div className="row">
                     <div className="col-md-6">
