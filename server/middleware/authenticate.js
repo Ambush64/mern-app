@@ -7,18 +7,13 @@ const User = require("../model/userSchema");
 
 const authenticate = async (req, res, next) => {
   try {
-    // console.log(req);
-    res.header("Access-Control-Allow-Origin", "*");
-    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept"); 
-    res.set('Access-Control-Allow-Origin', '*');
-
     const token = req.cookies.jwtoken;
-
     // compare the token (ie token ) with the secret key
 
-    const verifyToken = jwt.verify(token, "SAMPLEDATAOOWSAMPLEDATAOOWSAMPLEDATAOOWSAMPLEDATAOOWSAMPLEDATAOOW");
+    const verifyToken = jwt.verify(token, process.env.SECRET_KEY);
 
     // using the verify token we get all the details of the user
+
 
     const rootUser = await User.findOne({
       _id: verifyToken._id,
