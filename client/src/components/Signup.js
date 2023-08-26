@@ -43,6 +43,8 @@
            password,
            cpassword,
          }),
+                credentials: "include"
+
        });
 
        const data = await res.json();
