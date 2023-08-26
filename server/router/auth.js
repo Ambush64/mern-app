@@ -5,8 +5,8 @@ require("../db/conn");
 const User = require("../model/userSchema");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
-const cors = require("cors");
 const authenticate = require("../middleware/authenticate");
+
 
 // middleware
 // middleware's r fr sending the data through em first it will go to middleware and then
@@ -15,29 +15,11 @@ const authenticate = require("../middleware/authenticate");
 
 // to use a middleware use it in bw the get func bw the path & the params
 
-const middleware = (req, res, next) => {
-  console.log("middleware");
-  res.header("Access-Control-Allow-Origin", "*");
-    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept"); 
-    res.set('Access-Control-Allow-Origin', '*');
-
-  // eg:it checks if the user is logged in if not it will proceed to about or whatever page
-  // or else it will redirect to registration page
-  next();
-};
-
-app.use(cors({
-    origin: ['*'],
-    methods:['GET','POST'],
-    credentials: true,
-}));
 
 // storing data in db
 // using async
 router.post("/register", async (req, res) => {
   const { name, email, phone, work, password, cpassword } = req.body;
-  res.set('Access-Control-Allow-Origin', '*');
-
   if (!name || !email || !phone || !work || !password || !cpassword) {
     return res.status(422).json({ error: "Plz fill in the required fields" });
   }
@@ -65,8 +47,6 @@ router.post("/register", async (req, res) => {
     console.log(err);
   }
 
-  console.log(req.body.name);
-  console.log(name);
 });
 
 // using promises
@@ -108,8 +88,6 @@ router.post("/register", async (req, res) => {
 // login
 router.post("/signin", async (req, res) => {
   try {
-    res.set('Access-Control-Allow-Origin', '*');
-
     let token;
     const { email, password } = req.body;
     if (!email || !password) {
@@ -130,8 +108,10 @@ router.post("/signin", async (req, res) => {
         res.cookie("jwtoken", token, {
           // logout a user in how much time
           expires: new Date(Date.now() + 25892000000),
-          httpOnly: true,
+          // httpOnly: true,
         });
+
+
         res.status(200).json({ message: "login successful" });
         console.log("Login Successful");
       }
@@ -173,16 +153,12 @@ router.post("/signin", async (req, res) => {
 // about us page
 // for authentication we use middlewares(ie authenticate)
 router.get("/about", authenticate, (req, res) => {
-  res.set('Access-Control-Allow-Origin', '*');
-
   // req.rootUser is the rootUser we have stored in rootUser in authenticate
   // req.rootUser = rootUser;
   // and then we r sending the rootUser to the frontend whenever the req is made
 
   // res.send req.rootUser is shown in the network tab in the response tab
   res.send(req.rootUser);
-
-  console.log("After req.rootUser");
 });
 
 // get user data for contact and home page
@@ -195,8 +171,6 @@ router.get("/getdata", authenticate, (req, res) => {
 // contact us page
 router.post("/contact", authenticate, async (req, res) => {
   try {
-    res.set('Access-Control-Allow-Origin', '*');
-
     const { name, email, phone, message } = await req.body;
 
     if ((!name, !email, !phone, !message)) {
@@ -225,8 +199,6 @@ router.post("/contact", authenticate, async (req, res) => {
 
 // logout
 router.get("/logout", (req, res) => {
-  res.set('Access-Control-Allow-Origin', '*');
-
   // we login using verifying the cookie
 
   // so logout can be done by deleting the cookie
