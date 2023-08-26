@@ -7,44 +7,31 @@ require("../db/conn");
 const cookieParser = require("cookie-parser");
 const cors = require("cors")
 
-
 app.use(cookieParser());
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
-app.use(cors())
 
-app.use(function(req, res, next) {
-    res.header("Access-Control-Allow-Origin", "*");
-    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-  next();
-});
+app.use(function (req, res, next) {
+    res.header('Access-Control-Allow-Origin', 'http://localhost:3000');
+    res.header('Access-Control-Request-Method', '*');
+    res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,PATCH');
+    res.header('Access-Control-Allow-Headers', 'Content-Type');
+    res.header('Access-Control-Expose-Headers', 'Content-Type');
 
-
-app.use(cors({
-    origin: ['*'],
-    methods:['GET','POST'],
-    credentials: true,
-}));
-
-// dotenv is used for securing your confidential info
-// config accepts 2 obj key(path):value(the path of the file )
-
-app.all('/*', function (req, res, next) {
-    res.header("Access-Control-Allow-Origin", "http://localhost:8080");
-    res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
-    res.header("Access-Control-Allow-Headers", "X-Requested-With,     Content-Type");
     next();
 });
 
+app.use(cors({
+    origin: ['*'],
+    methods: ['GET', 'POST'],
+    credentials: true,
+}));
 
-app.get("/", (req, res) => {
-    res.header("Access-Control-Allow-Origin", "*");
-    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept"); 
-    res.set('Access-Control-Allow-Origin', '*');
 
-    res.json("hello");
 
-});
+
+// dotenv is used for securing your confidential info
+// config accepts 2 obj key(path):value(the path of the file )
 
 const PORT = process.env.PORT || 8000;
 const User = require("../model/userSchema");
@@ -59,9 +46,8 @@ const User = require("../model/userSchema");
 // we link the router file to make our route easy
 app.use(require("../router/auth"));
 
-
 // heroku
-if ( process.env.NODE_ENV == "production"){
+if (process.env.NODE_ENV == "production") {
 
     app.use(express.static("client/build"));
 
