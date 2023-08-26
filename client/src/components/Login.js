@@ -10,10 +10,19 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+  function setCookie(name, value, days) {
+    const expires = new Date();
+    expires.setDate(expires.getDate() + days);
+    const cookieValue = encodeURIComponent(value) + (days ? `; expires=${expires.toUTCString()}` : "");
+    document.cookie = `${name}=${cookieValue}; path=/`;
+  }
+
+
   const LoginUser = async (e) => {
     e.preventDefault();
+
     try {
-      const res = await fetch("https://mern-app-fwyw.onrender.com/signin", {
+      const res = await fetch("https://colorful-hen-earrings.cyclic.cloud/signin", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -24,15 +33,14 @@ const Login = () => {
         }),
         credentials: 'include'
       });
-      console.log(res)
 
-      const data = res.json();
+      const data = await res.json();
 
-      if (res.status === 400 || res.status === 401 || !data) {
+      if (res.status === 400 || !data) {
         window.alert("Invalid Credentials");
       } else {
-        // no need to seperately define action
         dispatch({ type: "USER", payload: true });
+        setCookie("jwtoken", data.cookie, 1);
         window.alert("Login Successfull");
 
         navigate("/");
