@@ -111,7 +111,7 @@ router.post("/signin", async (req, res) => {
         //   httpOnly: true,
         // });
 
-        res.cookie("jwtoken", "ss" });
+        res.cookie('title', 'GeeksforGeeks');
 
         res.status(200).json({ message: "login successful" });
         console.log("Login Successful");
