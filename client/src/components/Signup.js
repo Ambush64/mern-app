@@ -30,7 +30,7 @@
        const { name, email, phone, work, password, cpassword } = user;
 
       // initially it wint work cuz it sends on port 3000 but our server is on port 8000
-       const res = await fetch("/register", {
+       const res = await fetch("mern-app-rho.vercel.app/register", {
          method: "POST",
          headers: {
            "Content-Type": "application/json",
