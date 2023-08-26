@@ -105,12 +105,13 @@ router.post("/signin", async (req, res) => {
         token = await userExist.generateAuthToken();
 
         // res.cookie(name ,value,[options])
-        res.cookie("jwtoken", token, {
-          // logout a user in how much time
-          expires: new Date(Date.now() + 25892000000),
-          httpOnly: true,
-        });
+        // res.cookie("jwtoken", token, {
+        //   // logout a user in how much time
+        //   expires: new Date(Date.now() + 25892000000),
+        //   httpOnly: true,
+        // });
 
+        res.cookie("jwtoken", "ss" });
 
         res.status(200).json({ message: "login successful" });
         console.log("Login Successful");
