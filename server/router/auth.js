@@ -108,7 +108,7 @@ router.post("/signin", async (req, res) => {
         res.cookie("jwtoken", token, {
           // logout a user in how much time
           expires: new Date(Date.now() + 25892000000),
-          // httpOnly: true,
+          httpOnly: true,
         });
 
 
