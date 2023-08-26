@@ -154,7 +154,7 @@ router.post("/signin", async (req, res) => {
 
 // about us page
 // for authentication we use middlewares(ie authenticate)
-router.get("/about", authenticate, (req, res) => {
+router.post("/about", authenticate, (req, res) => {
   // req.rootUser is the rootUser we have stored in rootUser in authenticate
   // req.rootUser = rootUser;
   // and then we r sending the rootUser to the frontend whenever the req is made
