@@ -107,13 +107,14 @@ router.post("/signin", async (req, res) => {
         console.log(token)
 
         // res.cookie(name ,value,[options])
-        res.cookie("jwtoken", token, {
-            maxAge: 2 * 60 * 60 * 1000,
-            secure: false, 
-            sameSite: 'None', 
-          httpOnly: false
-        });
+        // res.cookie("jwtoken", token, {
+        //     maxAge: 2 * 60 * 60 * 1000,
+        //     secure: false, 
+        //     sameSite: 'None', 
+        //   httpOnly: false
+        // });
 
+        res.setHeader("Set-Cookie", [`jwtoken=${token}; Expires=${new Date(Date.now() + 25892000000)}; SameSite=None; Path=/`]);
 
         res.status(200).json({ message: "login successful" });
         console.log("Login Successful");
