@@ -12,7 +12,7 @@ const About = () => {
     // the user is valid or not
 
     try {
-      const res = await fetch("/about", {
+      const res = await fetch("mern-app-rho.vercel.app/about", {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
