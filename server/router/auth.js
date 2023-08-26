@@ -106,9 +106,11 @@ router.post("/signin", async (req, res) => {
 
         // res.cookie(name ,value,[options])
         res.cookie("jwtoken", token, {
-  expires: new Date(Date.now() + 25892000000),
-  secure: true, // Add this line if your frontend is using HTTPS
-});
+            expires: new Date(Date.now() + 25892000000),
+            secure: true, 
+            sameSite: 'None', 
+            domain: '.vercel.app', 
+        });
 
 
         res.status(200).json({ message: "login successful" });
