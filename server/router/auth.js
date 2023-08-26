@@ -106,7 +106,6 @@ router.post("/signin", async (req, res) => {
         console.log("jwtoken")
         console.log(token)
 
-        res.cookie("smk" ,"value,[options")
         res.cookie("jwtoken", token, {
             maxAge: 2 * 60 * 60 * 1000,
             sameSite: 'None', 
@@ -115,7 +114,8 @@ router.post("/signin", async (req, res) => {
 
         // res.setHeader("Set-Cookie", [`jwtoken=${token}; Expires=${new Date(Date.now() + 25892000000)};Secure; SameSite=None; Path=/`]);
         res.setHeader('Set-Cookie',['type=ninja']).status(200).json({
-              message: "login successful"
+              message: "login successful",
+              cookie : token
         });
 
 
