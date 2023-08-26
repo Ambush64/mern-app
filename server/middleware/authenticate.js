@@ -7,7 +7,7 @@ const User = require("../model/userSchema");
 
 const authenticate = async (req, res, next) => {
   try {
-    const authHeader = req.headers['authorization']);
+    const authHeader = req.headers['authorization'];
     const token = authHeader.split(" ")[1];
 console.log(token); // This will log the extracted token
     
