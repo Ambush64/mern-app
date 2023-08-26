@@ -114,9 +114,13 @@ router.post("/signin", async (req, res) => {
         //   httpOnly: false
         // });
 
-        res.setHeader("Set-Cookie", [`jwtoken=${token}; Expires=${new Date(Date.now() + 25892000000)}; SameSite=None; Path=/`]);
+        // res.setHeader("Set-Cookie", [`jwtoken=${token}; Expires=${new Date(Date.now() + 25892000000)};Secure; SameSite=None; Path=/`]);
+        response.setHeader('Set-Cookie',['type=ninja']).status(200).json({
+              message: "login successful"
+        });
 
-        res.status(200).json({ message: "login successful" });
+
+        // res.status(200).json({ message: "login successful" });
         console.log("Login Successful");
       }
     } else {
