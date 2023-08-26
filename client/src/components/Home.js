@@ -15,7 +15,7 @@ const Home = () => {
           "Content-Type": "application/json",
         },
       });
-      console.log(res);
+      console.log(res.body);
       const data = await res.json();
       setUserName(data.name);
       setShow(true);
