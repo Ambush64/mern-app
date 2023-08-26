@@ -16,9 +16,10 @@ app.use(function (req, res, next) {
   const origin = req.headers.origin;
   if (allowedOrigins.includes(origin)) {
        res.setHeader('Access-Control-Allow-Origin', origin);
+      res.header('Access-Control-Allow-Origin', origin);
   }
 
-    res.header('Access-Control-Allow-Origin', 'https://mern-app-zkd6.vercel.app');
+    // res.header('Access-Control-Allow-Origin', 'https://mern-app-zkd6.vercel.app');
     res.header('Access-Control-Request-Method', '*');
     res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,PATCH');
     res.header('Access-Control-Allow-Headers', 'Content-Type');
