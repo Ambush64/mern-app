@@ -164,7 +164,7 @@ router.post("/about", authenticate, (req, res) => {
 });
 
 // get user data for contact and home page
-router.get("/getdata", authenticate, (req, res) => {
+router.post("/getdata", authenticate, (req, res) => {
   // and then we r sending the rootUser to the frontend whenever the req is made
   // res.send("This is about page");
   res.send(req.rootUser);
