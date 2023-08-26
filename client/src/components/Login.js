@@ -22,9 +22,9 @@ const Login = () => {
           email,
           password,
         }),
-                credentials: "include"
-
+        credentials: 'include'
       });
+      console.log(res)
 
       const data = res.json();
 
