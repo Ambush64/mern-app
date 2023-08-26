@@ -9,7 +9,7 @@ const authenticate = async (req, res, next) => {
   try {
     const token = req.cookies.jwtoken;
     console.log("token", token);
-    console.log("cookie", req.cookies);
+    console.log("cookie", req);
     // compare the token (ie token ) with the secret key
 
     const verifyToken = jwt.verify(token, process.env.SECRET_KEY);
