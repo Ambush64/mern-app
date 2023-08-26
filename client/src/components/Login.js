@@ -13,7 +13,7 @@ const Login = () => {
   const LoginUser = async (e) => {
     e.preventDefault();
     try {
-      const res = await fetch("/signin", {
+      const res = await fetch("mern-app-rho.vercel.app/signin", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
