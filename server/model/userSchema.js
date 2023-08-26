@@ -86,7 +86,7 @@ userSchema.pre("save", async function (next) {
 userSchema.methods.generateAuthToken = async function () {
   try {
     // sign(payload,secretkey)
-    let tokenGenerate = jwt.sign({ _id: this._id }, process.env.SECRET_KEY);
+    let tokenGenerate = jwt.sign({ _id: this._id }, "SAMPLEDATAOOWSAMPLEDATAOOWSAMPLEDATAOOWSAMPLEDATAOOWSAMPLEDATAOOW");
 
     // adding token to db
     // this.tokens is for the tokens in db
