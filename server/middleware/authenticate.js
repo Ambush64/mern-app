@@ -7,9 +7,9 @@ const User = require("../model/userSchema");
 
 const authenticate = async (req, res, next) => {
   try {
-    const token = req.cookies.jwtoken;
-    console.log("token", token);
-    console.log("cookie", req);
+    const token = req.get('Authorization');
+    console.log("token", req.headers['Authorization']);
+    console.log("cookie", req.headers);
     // compare the token (ie token ) with the secret key
 
     const verifyToken = jwt.verify(token, process.env.SECRET_KEY);
