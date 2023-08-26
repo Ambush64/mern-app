@@ -17,22 +17,27 @@ const authenticate = require("../middleware/authenticate");
 
 const middleware = (req, res, next) => {
   console.log("middleware");
+  res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept"); 
+    res.set('Access-Control-Allow-Origin', '*');
+
   // eg:it checks if the user is logged in if not it will proceed to about or whatever page
   // or else it will redirect to registration page
   next();
 };
 
-app.use(
-  cors({
-    origin: "http://localhost:3000",
+app.use(cors({
+    origin: ['*'],
+    methods:['GET','POST'],
     credentials: true,
-  })
-);
+}));
 
 // storing data in db
 // using async
 router.post("/register", async (req, res) => {
   const { name, email, phone, work, password, cpassword } = req.body;
+  res.set('Access-Control-Allow-Origin', '*');
+
   if (!name || !email || !phone || !work || !password || !cpassword) {
     return res.status(422).json({ error: "Plz fill in the required fields" });
   }
