@@ -9,8 +9,38 @@ const cookieParser = require("cookie-parser");
 app.use(cookieParser());
 app.use(express.json());
 
+app.use(function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
+
+
+app.use(cors({
+    origin: ['*'],
+    methods:['GET','POST'],
+    credentials: true,
+}));
+
 // dotenv is used for securing your confidential info
 // config accepts 2 obj key(path):value(the path of the file )
+
+app.all('/*', function (req, res, next) {
+    res.header("Access-Control-Allow-Origin", "http://localhost:8080");
+    res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
+    res.header("Access-Control-Allow-Headers", "X-Requested-With,     Content-Type");
+    next();
+});
+
+
+app.get("/", (req, res) => {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept"); 
+    res.set('Access-Control-Allow-Origin', '*');
+
+    res.json("hello");
+
+});
 
 const PORT = process.env.PORT || 8000;
 const User = require("../model/userSchema");
@@ -24,6 +54,7 @@ const User = require("../model/userSchema");
 
 // we link the router file to make our route easy
 app.use(require("../router/auth"));
+
 
 // heroku
 if ( process.env.NODE_ENV == "production"){
