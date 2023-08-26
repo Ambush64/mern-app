@@ -36,6 +36,12 @@ app.use(cors({
 const PORT = process.env.PORT || 8000;
 const User = require("../model/userSchema");
 
+app.get('/', (req, res) => {
+    res.send("GET Request Called");
+    res.json("hello");
+})
+ 
+
 // middleware
 // middleware's r fr sending the data through em cd clfirst it will go to middleware and then
 // the next func
