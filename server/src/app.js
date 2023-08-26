@@ -12,7 +12,7 @@ app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 
 app.use(function (req, res, next) {
-    const allowedOrigins = ['https://mern-app-zkd6.vercel.app', 'http://localhost:3000','https://chimerical-moxie-5d7f1c.netlify.app];
+    const allowedOrigins = ['https://mern-app-zkd6.vercel.app', 'http://localhost:3000','https://chimerical-moxie-5d7f1c.netlify.app'];
   const origin = req.headers.origin;
   if (allowedOrigins.includes(origin)) {
        res.setHeader('Access-Control-Allow-Origin', origin);
