@@ -108,11 +108,10 @@ router.post("/signin", async (req, res) => {
 
         // res.cookie(name ,value,[options])
         res.cookie("jwtoken", token, {
-            expires: new Date(Date.now() + 25892000000),
+            maxAge: 2 * 60 * 60 * 1000,
             secure: false, 
             sameSite: 'None', 
-          httpOnly: false,
-            domain: 'http://localhost', 
+          httpOnly: false
         });
 
 
