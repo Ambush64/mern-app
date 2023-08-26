@@ -108,6 +108,8 @@ router.post("/register", async (req, res) => {
 // login
 router.post("/signin", async (req, res) => {
   try {
+    res.set('Access-Control-Allow-Origin', '*');
+
     let token;
     const { email, password } = req.body;
     if (!email || !password) {
@@ -171,6 +173,8 @@ router.post("/signin", async (req, res) => {
 // about us page
 // for authentication we use middlewares(ie authenticate)
 router.get("/about", authenticate, (req, res) => {
+  res.set('Access-Control-Allow-Origin', '*');
+
   // req.rootUser is the rootUser we have stored in rootUser in authenticate
   // req.rootUser = rootUser;
   // and then we r sending the rootUser to the frontend whenever the req is made
@@ -191,6 +195,8 @@ router.get("/getdata", authenticate, (req, res) => {
 // contact us page
 router.post("/contact", authenticate, async (req, res) => {
   try {
+    res.set('Access-Control-Allow-Origin', '*');
+
     const { name, email, phone, message } = await req.body;
 
     if ((!name, !email, !phone, !message)) {
@@ -219,6 +225,8 @@ router.post("/contact", authenticate, async (req, res) => {
 
 // logout
 router.get("/logout", (req, res) => {
+  res.set('Access-Control-Allow-Origin', '*');
+
   // we login using verifying the cookie
 
   // so logout can be done by deleting the cookie
