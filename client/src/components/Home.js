@@ -14,6 +14,8 @@ const Home = () => {
         headers: {
           "Content-Type": "application/json",
         },
+                credentials: "include"
+
       });
       console.log(res.body);
       const data = await res.json();
