@@ -109,7 +109,7 @@ router.post("/signin", async (req, res) => {
             expires: new Date(Date.now() + 25892000000),
             secure: true, 
             sameSite: 'None', 
-            domain: '.vercel.app', 
+            domain: 'http://localhost/', 
         });
 
 
